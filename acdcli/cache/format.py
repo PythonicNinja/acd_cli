@@ -69,9 +69,10 @@ class LSFormatter(ListFormatter):
                 bunch.path = node.containing_folder()
             if recursive and node.is_folder() and not is_first and children > 0:
                 yield ''
-            yield '[{}] [{}] {}{}'.format(
+            yield '[{}] [{}] {} {}{}'.format(
                 nor_fmt % node.id,
                 color_status(node.status),
+                node.updated.replace(microsecond=0),
                 color_path(bunch.path) if node.is_folder() and children else '',
                 color_path(node.simple_name())
             )
